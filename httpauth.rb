@@ -1,3 +1,5 @@
+# This code is adapted from http://www.gittr.com/index.php/archive/sinatra-basic-authentication-selectively-applied/
+
 module Sinatra
   module Authorization
  
