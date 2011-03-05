@@ -1,0 +1,64 @@
+body {
+    font-family: Helvetica;
+    margin:0px;
+    padding:0px;
+}
+
+#header {
+    background-color: #1c364c;
+    padding:4px;
+    margin:0px;
+}
+
+#header h1 {
+    margin:0px;
+    padding:0px;
+    color: white;
+}
+
+#main {
+    background-color:#366a96;
+    color:#eee;
+    margin:0px;
+    padding:4px;
+    min-height:300px;
+}
+
+#main a.repo {
+    color: #eee;
+    font-size: 20px;
+    background-color: #568ab6;
+    padding: 2px 5px 2px 5px;
+    border: 1px solid #76a6d6;
+    margin-right:8px;
+    line-height: 40px;
+    text-decoration: none;
+}
+
+h2.repotitle {
+    color: #eee;
+    font-size: 30px;
+    background-color: #568ab6;
+    padding: 2px 5px 2px 5px;
+    border: 1px solid #76a6d6;
+}
+
+#footer {
+    background-color:#b6cfe3;
+    color:#333;
+    margin:0px;
+    padding:4px;
+}
+
+p {
+    margin-left:30px;
+}
+
+.back {
+    padding-top:15px;
+    font-size:20px;
+}
+.back a {
+    color:white;
+    text-decoration:none;
+}

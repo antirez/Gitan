@@ -1,0 +1,29 @@
+<div class="back"><a href="/">&laquo; Repositories</a></div>
+<h2 class="repotitle"><%= @repo %></h2>
+<h3>Branches</h3>
+<ul>
+<%=
+h = ""
+path = $reporoot + "/" + @repo + ".git"
+p = IO.popen("scripts/branchinfo.sh #{path}")
+p.to_a.each{|branch|
+    h += "<li>#{branch.sub("* ","")}</li>\n"
+}
+p.close
+h
+%>
+</ul>
+
+<h3>Latest commits</h3>
+<ul>
+<%=
+h = ""
+path = $reporoot + "/" + @repo + ".git"
+p = IO.popen("scripts/branchlog.sh #{path}")
+p.to_a.each{|commit|
+    h += "<li>#{commit}</li>\n"
+}
+p.close
+h
+%>
+</ul>

@@ -1,0 +1,11 @@
+<h2>Repositories</h2>
+<ul>
+<%=
+h = ""
+@repos.sort.each{|r|
+    next if not r =~ /.*\.git$/
+    h << "<a href=\"/info/#{r[0..-5]}\" class=\"repo\">#{r[0..-5]}</a> "
+}
+h
+%>
+</ul>
