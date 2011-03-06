@@ -7,6 +7,7 @@ body {
 #header {
     background-color: #1c364c;
     padding:4px;
+    padding-left:15px;
     margin:0px;
 }
 
@@ -20,7 +21,7 @@ body {
     background-color:#366a96;
     color:#eee;
     margin:0px;
-    padding:4px;
+    padding:15px;
     min-height:300px;
 }
 
@@ -47,7 +48,7 @@ h2.repotitle {
     background-color:#b6cfe3;
     color:#333;
     margin:0px;
-    padding:4px;
+    padding:15px;
 }
 
 p {
