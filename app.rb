@@ -23,6 +23,13 @@ get '/info/:repo' do
     erb :repoinfo
 end
 
+get '/commit/:repo/:rev' do
+    require_administrative_privileges
+    @repo = params[:repo]
+    @rev = params[:rev]
+    erb :commitinfo
+end
+
 post '/create' do
     require_administrative_privileges
     throw :halt, [ 400, 'Bad Request' ] if !params[:reponame]

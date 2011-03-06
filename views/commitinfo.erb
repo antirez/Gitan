@@ -1,0 +1,12 @@
+<div class="back"><a href="/info/<%= @repo %>">&laquo; <%= @repo %></a></div>
+<h2 class="repotitle"><%= @repo+" / "+@rev %></h2>
+<h3>Commit details</h3>
+<pre>
+<%=
+path = $reporoot + "/" + @repo + ".git"
+p = IO.popen("scripts/commitinfo.sh #{path} #{@rev}")
+h = p.to_a.join
+p.close
+h
+%>
+</pre>

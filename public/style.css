@@ -62,3 +62,9 @@ p {
     color:white;
     text-decoration:none;
 }
+
+ul.commits a {
+    color:yellow;
+    text-decoration: none;
+    font-weight: bold;
+}

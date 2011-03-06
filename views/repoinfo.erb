@@ -15,13 +15,16 @@ h
 </ul>
 
 <h3>Latest commits</h3>
-<ul>
+<ul class="commits">
 <%=
 h = ""
 path = $reporoot + "/" + @repo + ".git"
 p = IO.popen("scripts/branchlog.sh #{path}")
 p.to_a.each{|commit|
-    h += "<li>#{commit}</li>\n"
+    i = commit.index(" ")
+    rev = commit[0..(i-1)]
+    descr = commit[i..-1]
+    h += "<li><a href=\"/commit/#{@repo}/#{rev}\">#{rev}</a> #{descr}</li>\n"
 }
 p.close
 h
