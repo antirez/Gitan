@@ -1,12 +1,28 @@
 <div class="back"><a href="/info/<%= @repo %>">&laquo; <%= @repo %></a></div>
 <h2 class="repotitle"><%= @repo+" / "+@rev %></h2>
 <h3>Commit details</h3>
-<pre>
+<div class="code">
 <%=
 path = $reporoot + "/" + @repo + ".git"
 p = IO.popen("scripts/commitinfo.sh #{path} #{@rev}")
-h = he(p.to_a.join)
+h = ""
+p.to_a.each{|line|
+    if line[0..1] == '@@'
+        style = 'font-weight:bold; color:yellow'
+    elsif line[0..4] == 'index' or line[0..3] == 'diff'
+        style = 'font-weight:bold'
+    elsif line[0..2] == '+++' or line[0..2] == '---'
+        style = 'font-weight:bold'
+    elsif line[0..1] == '- '
+        style = 'color:#f55000"'
+    elsif line[0..1] == '+ '
+        style = 'color:#99ff99"'
+    else
+        style = 'color:#bbb'
+    end
+    h += "<div style=\"#{style}\">"+(he(line).sub(" ","&nbsp;"))+"</div>\n"
+}
 p.close
 h
 %>
-</pre>
+</div>

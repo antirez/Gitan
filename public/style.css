@@ -68,3 +68,7 @@ ul.commits a {
     text-decoration: none;
     font-weight: bold;
 }
+
+div.code {
+    font-family:monospace;
+}
