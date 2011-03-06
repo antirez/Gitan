@@ -5,7 +5,7 @@
 <%=
 path = $reporoot + "/" + @repo + ".git"
 p = IO.popen("scripts/commitinfo.sh #{path} #{@rev}")
-h = p.to_a.join
+h = he(p.to_a.join)
 p.close
 h
 %>

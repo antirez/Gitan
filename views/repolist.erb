@@ -4,7 +4,7 @@
 h = ""
 @repos.sort.each{|r|
     next if not r =~ /.*\.git$/
-    h << "<a href=\"/info/#{r[0..-5]}\" class=\"repo\">#{r[0..-5]}</a> "
+    h << "<a href=\"/info/#{ue(r[0..-5])}\" class=\"repo\">#{he(r[0..-5])}</a> "
 }
 h
 %>

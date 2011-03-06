@@ -1,5 +1,5 @@
 <div class="back"><a href="/">&laquo; Repositories</a></div>
-<h2 class="repotitle"><%= @repo %></h2>
+<h2 class="repotitle"><%= he(@repo) %></h2>
 <h3>Branches</h3>
 <ul>
 <%=
@@ -7,7 +7,7 @@ h = ""
 path = $reporoot + "/" + @repo + ".git"
 p = IO.popen("scripts/branchinfo.sh #{path}")
 p.to_a.each{|branch|
-    h += "<li>#{branch.sub("* ","")}</li>\n"
+    h += "<li>#{he(branch.sub("* ",""))}</li>\n"
 }
 p.close
 h
@@ -24,7 +24,7 @@ p.to_a.each{|commit|
     i = commit.index(" ")
     rev = commit[0..(i-1)]
     descr = commit[i..-1]
-    h += "<li><a href=\"/commit/#{@repo}/#{rev}\">#{rev}</a> #{descr}</li>\n"
+    h += "<li><a href=\"/commit/#{he @repo}/#{rev}\">#{ue rev}</a> #{he descr}</li>\n"
 }
 p.close
 h

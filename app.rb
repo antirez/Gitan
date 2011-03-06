@@ -1,6 +1,9 @@
 require 'rubygems'
 require 'sinatra'
 require 'httpauth'
+require 'uri'
+require 'gitan'
+
 require 'gitan_config'
 
 before do
