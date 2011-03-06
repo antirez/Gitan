@@ -2,6 +2,7 @@ body {
     font-family: Helvetica;
     margin:0px;
     padding:0px;
+    background-color:#ddd;
 }
 
 #header {
@@ -22,7 +23,7 @@ body {
     color:#eee;
     margin:0px;
     padding:15px;
-    min-height:300px;
+    min-height:150px;
 }
 
 #main a.repo {
