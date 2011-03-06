@@ -13,9 +13,9 @@ p.to_a.each{|line|
         style = 'font-weight:bold'
     elsif line[0..2] == '+++' or line[0..2] == '---'
         style = 'font-weight:bold'
-    elsif line[0..1] == '- '
+    elsif line[0..0] == '-'
         style = 'color:#f55000"'
-    elsif line[0..1] == '+ '
+    elsif line[0..0] == '+'
         style = 'color:#99ff99"'
     else
         style = 'color:#bbb'
