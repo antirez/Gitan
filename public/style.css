@@ -74,3 +74,20 @@ ul.commits a {
 div.code {
     font-family:monospace;
 }
+
+#helpbox {
+    line-height:20px;
+    padding-bottom:40px;
+    margin:15px;
+}
+
+#helpbox h3 {
+    font-size:24px;
+    color:#444;
+}
+
+#helpbox a {
+    text-decoration: none;
+    color: #1c364c;
+    font-weight: bold;
+}
