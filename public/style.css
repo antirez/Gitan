@@ -37,11 +37,17 @@ body {
     text-decoration: none;
 }
 
-h2.repotitle {
-    color: #eee;
+.repotitle h2 {
     font-size: 30px;
+    margin:0;
+    padding:0;
+}
+
+div.repotitle {
+    color: #eee;
+    margin-top:10px;
     background-color: #568ab6;
-    padding: 2px 5px 2px 5px;
+    padding: 15px;
     border: 1px solid #76a6d6;
 }
 

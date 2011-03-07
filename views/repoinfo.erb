@@ -1,5 +1,10 @@
 <div class="back"><a href="/">&laquo; Repositories</a></div>
-<h2 class="repotitle"><%= he(@repo) %></h2>
+<div class="repotitle">
+<h2><%= he(@repo) %></h2>
+<p>
+git clone <%=$gituser%>@<%=$githost%>:<%=$reporoot%>/<%=he(@repo)%>.git
+</p>
+</div>
 <h3>Branches</h3>
 <ul>
 <%=
