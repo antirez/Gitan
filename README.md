@@ -20,10 +20,7 @@ INSTALLATION INSTRUCTIONS
 * Install git, ruby, sinatra.
 * Create a "git" user, you can call the user in a different way if you wish as you can set the username into the gitan_config.rb file.
 * Create the ~/.ssh/authorized_keys file, and populate it with all the public keys of users that should access the system.
-* Create the repository root somewhere, something like:
-
-    mkdir /var/gitan/repositories
-
+* Create the repository root somewhere, something like: *mkdir /var/gitan/repositories*
 * Make sure the git user can write into /var/git/repositories.
 * Clone the gitan application somewhere.
 * cp gitan_config.rb.example into gitan_config.rb
