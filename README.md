@@ -18,10 +18,8 @@ INSTALLATION INSTRUCTIONS
 
 * Get some small instance everywhere, I use a linode small instance.
 * Install git, ruby, sinatra.
-* Create a "git" user, you can call the user in a different way if you wish
-  as you can set the username into the gitan_config.rb file.
-* Create the ~/.ssh/authorized_keys file, and populate it with all the
-  public keys of users that should access the system.
+* Create a "git" user, you can call the user in a different way if you wish as you can set the username into the gitan_config.rb file.
+* Create the ~/.ssh/authorized_keys file, and populate it with all the public keys of users that should access the system.
 * Create the repository root somewhere, something like:
 
     mkdir /var/gitan/repositories
