@@ -7,7 +7,7 @@ using a web interface.
 There is no access control list at all in this system:
 
 * The git repositories are accessible only by users having their ssh public key into the authorized_keys file of the git user.
-* The web interface is protected by HTTP authentication with a single username/password for all the users.
+* The web interface is protected by HTTP authentication with multiple username/password combinations.
 
 The program is only able to show available repositories with some information
 like branches and latest commits, and to allow the creation of new git
@@ -25,6 +25,11 @@ INSTALLATION INSTRUCTIONS
 * Clone the gitan application somewhere.
 * **cp gitan_config.rb.example gitan_config.rb**
 * Edit gitan_config.rb and modify it accordingly to your setup.
+* Execute **yauth add YOURUSER YOURPASSWORD --config users.yml** to
+  setup the username and password. Repeat to setup new users.
+* Commit the changes made to your users.yml file, and push it somewhere.
+  It's safe, as passwords are hashed using bcrypt, see yauth
+  documentation.
 * Run the Sinatra application. I just use **ruby app.rb** inside screen.
 * MAKE SURE you run the sinatra application using the git user.
 * You are ready to use the system, go to http://yourhost.com:4567
