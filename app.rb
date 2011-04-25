@@ -4,18 +4,18 @@ require 'yauth'
 require 'uri'
 require File.join(File.dirname(__FILE__), 'gitan_config')
 
-set :sessions, true
-
-Yauth::Strategy.install!
-
-Yauth.location = File.join(File.dirname(__FILE__), "users.yml")
-
-use Warden::Manager do |manager|
-  manager.default_strategies :yauth_users
-  manager.failure_app = Yauth::FailureApp.new($sitename)
-end
 
 class Gitan < Sinatra::Base
+  set :sessions, true
+
+  Yauth::Strategy.install!
+  Yauth.location = File.join(File.dirname(__FILE__), "users.yml")
+
+  use Warden::Manager do |manager|
+    manager.default_strategies :yauth_users
+    manager.failure_app = Yauth::FailureApp.new($sitename)
+  end
+
   dir = File.dirname(File.expand_path(__FILE__))
 
   set :views, "#{dir}/views"
@@ -27,7 +27,6 @@ class Gitan < Sinatra::Base
   end
 
   helpers do
-    include Sinatra::Authorization
   end
 
   get '/' do
