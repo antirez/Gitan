@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+begin
+  require 'vegas'
+rescue LoadError
+  require 'rubygems'
+  require 'vegas'
+end
+
+require File.expand_path(File.dirname(__FILE__) + '/../app.rb')
+
+Vegas::Runner.new(Gitan, 'gitan-web') do |runner, opts, app|
+  # runner is the instance of Vegas::Runner
+  # opts is an option parser object
+  # app is your app class
+end

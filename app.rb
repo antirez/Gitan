@@ -1,40 +1,51 @@
 require 'rubygems'
 require 'sinatra'
-require 'httpauth'
+require 'yauth'
 require 'uri'
-require 'gitan'
+require File.join(File.dirname(__FILE__), 'gitan_config')
 
-require 'gitan_config'
 
-before do
-    # Nothing to do so far
-end
+class Gitan < Sinatra::Base
+  set :sessions, true
 
-helpers do
-  include Sinatra::Authorization
-end
+  Yauth::Strategy.install!
+  Yauth.location = File.join(File.dirname(__FILE__), "users.yml")
 
-get '/' do
-    require_administrative_privileges
+  use Warden::Manager do |manager|
+    manager.default_strategies :yauth_users
+    manager.failure_app = Yauth::FailureApp.new($sitename)
+  end
+
+  dir = File.dirname(File.expand_path(__FILE__))
+
+  set :views, "#{dir}/views"
+  set :public, "#{dir}/public"
+  set :static, true
+
+  before do
+    request.env['warden'].authenticate! # execution stop and auth is required
+  end
+
+  helpers do
+  end
+
+  get '/' do
     @repos = Dir.open($reporoot).to_a
     erb :repolist
-end
+  end
 
-get '/info/:repo' do
-    require_administrative_privileges
+  get '/info/:repo' do
     @repo = params[:repo]
     erb :repoinfo
-end
+  end
 
-get '/commit/:repo/:rev' do
-    require_administrative_privileges
+  get '/commit/:repo/:rev' do
     @repo = params[:repo]
     @rev = params[:rev]
     erb :commitinfo
-end
+  end
 
-post '/create' do
-    require_administrative_privileges
+  post '/create' do
     throw :halt, [ 400, 'Bad Request' ] if !params[:reponame]
     throw :halt, [ 400, 'Name Too Short' ] if params[:reponame].length < 3
     reponame = params[:reponame].gsub(/[^A-z]/,"_")
@@ -42,5 +53,6 @@ post '/create' do
     throw :halt, [ 400, 'Repository exists' ] if File.exists? path
     system("mkdir #{path}; cd #{path}; git init --bare")
     redirect '/'
-end
+  end
 
+end
