@@ -10,7 +10,7 @@ git clone <%=$gituser%>@<%=$githost%>:<%=$reporoot%>/<%=he(@repo)%>.git
 <%=
 h = ""
 path = $reporoot + "/" + @repo + ".git"
-p = IO.popen("scripts/branchinfo.sh #{path}")
+p = IO.popen("scripts/branchinfo.sh #{path}", :external_encoding=>"UTF-8")
 p.to_a.each{|branch|
     h += "<li>#{he(branch.sub("* ",""))}</li>\n"
 }
@@ -24,7 +24,7 @@ h
 <%=
 h = ""
 path = $reporoot + "/" + @repo + ".git"
-p = IO.popen("scripts/branchlog.sh #{path}")
+p = IO.popen("scripts/branchlog.sh #{path}", :external_encoding=>"UTF-8")
 p.to_a.each{|commit|
     i = commit.index(" ")
     rev = commit[0..(i-1)]
